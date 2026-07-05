@@ -1,6 +1,9 @@
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 export default function Login() {
+
+    const navigate = useNavigate();
     const {
         register,
         handleSubmit,
@@ -8,7 +11,9 @@ export default function Login() {
     } = useForm();
     const onSubmit = (data) => {
         console.log(data);
+        navigate("/dashboard");
     };
+
     return (
         <div className="min-h-screen flex items-center justify-center bg-blue-50">
             <div className="bg-white p-10 rounded-xl shadow-xl w-[420px]">
