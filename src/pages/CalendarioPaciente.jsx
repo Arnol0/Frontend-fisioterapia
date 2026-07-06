@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import NavbarPaciente from "../components/common/NavbarPaciente";
 
-import StatsCalendario from "../components/calendario/StatsCalendario";
+import StatsCalendario from "../components/calendario/Statscalendario";
 import CalendarioWidget from "../components/calendario/CalendarioWidget";
 import ProximaSesionCard from "../components/calendario/ProximaSesionCard";
 import TimelineActividades from "../components/calendario/TimelineActividades";
