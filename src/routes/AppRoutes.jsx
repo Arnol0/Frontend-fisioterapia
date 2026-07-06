@@ -10,6 +10,8 @@ import Contacto from "../pages/Contacto"
 import PoliticaPrivacidad from "../pages/PoliticaPrivacidad";
 import TerminosCondiciones from "../pages/TerminosCondiciones";
 
+import DashboardAdministrador from "../pages/DashboardAdministrador";
+
 import DashboardPaciente from "../pages/DashboardPaciente";
 import CalendarioPaciente from "../pages/CalendarioPaciente";
 import Rutina from "../pages/Rutina";
@@ -39,6 +41,7 @@ export default function AppRoutes() {
                 <Route path="/calendario" element={<CalendarioPaciente />} />
                 <Route path="/rutina" element={<Rutina />} />
                 <Route path="/historial" element={<Historial />} />
+                <Route path="/administrador" element={<DashboardAdministrador />}/>
 
 
             </Routes>
