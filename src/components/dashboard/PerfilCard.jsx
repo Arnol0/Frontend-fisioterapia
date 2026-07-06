@@ -4,8 +4,11 @@ import {
     FaPhoneAlt,
     FaUserEdit
 } from "react-icons/fa";
+import { useAuth } from "../../context/AuthContext";
 
 export default function PerfilCard() {
+
+    const { usuario } = useAuth();
 
     return (
 
@@ -21,7 +24,7 @@ export default function PerfilCard() {
                     </div>
 
                     <h2 className="text-2xl font-bold mt-4 text-slate-800">
-                        Fátima Pérez
+                        {usuario?.nombre} {usuario?.apellido}
                     </h2>
 
                     <span className="mt-2 px-4 py-1 rounded-full bg-blue-100 text-blue-700 text-sm font-semibold">
@@ -42,7 +45,7 @@ export default function PerfilCard() {
                             </p>
 
                             <p className="font-semibold">
-                                fatima@gmail.com
+                                {usuario?.correo}
                             </p>
                         </div>
 
@@ -59,7 +62,7 @@ export default function PerfilCard() {
                             </p>
 
                             <p className="font-semibold">
-                                +51 999 999 999
+                                {usuario?.telefono}
                             </p>
                         </div>
                     </div>

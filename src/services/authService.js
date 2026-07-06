@@ -16,3 +16,16 @@ export const loginUser = async (data) => {
     const response = await API.post("/login", data);
     return response.data;
 };
+
+export const getPerfil = async () => {
+
+    const token = localStorage.getItem("token");
+
+    const response = await API.get("/perfil", {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        },
+    });
+
+    return response.data;
+};

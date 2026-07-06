@@ -4,7 +4,12 @@ import {
     FaHeartbeat
 } from "react-icons/fa";
 
+import { useAuth } from "../../context/AuthContext";
+
 export default function HeroDashboard() {
+
+    const { usuario } = useAuth();
+    
     return (
         <section className="bg-gradient-to-r from-blue-600 via-blue-700 to-cyan-600 rounded-[32px] shadow-xl overflow-hidden">
             <div className="grid lg:grid-cols-2 items-center">
@@ -14,7 +19,7 @@ export default function HeroDashboard() {
                     </span>
 
                     <h1 className="mt-6 text-5xl font-bold leading-tight">
-                        Hola, Fátima
+                        Hola, {usuario?.nombre} {usuario?.apellido}
                     </h1>
 
                     <p className="mt-5 text-blue-100 text-lg leading-8">

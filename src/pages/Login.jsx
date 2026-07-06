@@ -1,11 +1,13 @@
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
-import { loginUser } from "../services/authService";
 import { toast } from "sonner";
+import { loginUser, getPerfil } from "../services/authService";
+import { useAuth } from "../context/AuthContext";
 
 export default function Login() {
 
     const navigate = useNavigate();
+    const { setUsuario } = useAuth();
 
     const {
         register,
@@ -17,21 +19,24 @@ export default function Login() {
 
         try {
 
-            const usuario = await loginUser(data);
-            console.log(usuario);
-            // Guardar token
-            localStorage.setItem("token", usuario.token);
-
+            const respuesta = await loginUser(data);
+            // guardar solamente el token
+            localStorage.setItem("token", respuesta.token);
+            // consultar el perfil
+            const usuario = await getPerfil();
+            // guardar usuario completo
             localStorage.setItem(
                 "usuario",
                 JSON.stringify(usuario)
             );
 
+            setUsuario(usuario);
+
             toast.success(`Bienvenido ${usuario.nombre}`, {
-            description: "Inicio de sesión exitoso en PhysioTrack."
+                description: "Inicio de sesión exitoso en PhysioTrack."
             });
 
-            
+
             if (usuario.rol === "admin") {
                 navigate("/administrador");
             } else {
@@ -41,9 +46,9 @@ export default function Login() {
         } catch (error) {
 
             toast.error("Error al iniciar sesión", {
-            description:
-                error.response?.data?.mensaje ||
-                "Correo o contraseña incorrectos."
+                description:
+                    error.response?.data?.mensaje ||
+                    "Correo o contraseña incorrectos."
             });
 
         }

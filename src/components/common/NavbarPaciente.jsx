@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
 
 import {
     FaUserCircle,
@@ -12,20 +13,16 @@ import {
 export default function NavbarPaciente() {
 
     const [menuAbierto, setMenuAbierto] = useState(false);
-
     const navigate = useNavigate();
-
+    const { usuario, setUsuario } = useAuth();
     const cerrarSesion = () => {
 
-        // EL QUE LEA ESTO POR FAVOR AQUI VA EL LOGOUT
-        // DEPENDE QUE USES EN EL BACK, PUEDES REEMPLAZAR ESTO
-        // NO SE QUE USARAN PERO YO HARIA ALGO COMO
-        // localStorage.removeItem("token");
-        // localStorage.removeItem("usuario");
+        localStorage.removeItem("token");
+        localStorage.removeItem("usuario");
 
+        setUsuario(null);
         setMenuAbierto(false);
         navigate("/");
-
     };
 
     return (
@@ -108,7 +105,7 @@ export default function NavbarPaciente() {
 
                         <div className="text-left hidden lg:block">
                             <p className="font-semibold text-slate-800">
-                                Fátima Pérez
+                                {usuario?.nombre} {usuario?.apellido}
                             </p>
 
                             <p className="text-xs text-slate-500">
@@ -131,7 +128,7 @@ export default function NavbarPaciente() {
                                         className="text-white"
                                     />
                                     <h3 className="mt-3 text-xl font-bold">
-                                        Fátima Pérez
+                                        {usuario?.nombre} {usuario?.apellido}
                                     </h3>
                                     <span className="mt-2 px-4 py-1 rounded-full bg-white/20 text-sm">
                                         Paciente
