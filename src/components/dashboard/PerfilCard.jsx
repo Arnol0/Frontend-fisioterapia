@@ -5,10 +5,11 @@ import {
     FaUserEdit
 } from "react-icons/fa";
 import { useAuth } from "../../context/AuthContext";
-
-export default function PerfilCard() {
+import { useNavigate } from "react-router-dom";
+export default function PerfilCard({ patient }) {
 
     const { usuario } = useAuth();
+    const navigate = useNavigate();
 
     return (
 
@@ -67,8 +68,41 @@ export default function PerfilCard() {
                         </div>
                     </div>
                 </div>
+                <div className="flex items-center gap-4 bg-slate-50 rounded-2xl p-4">
+                <div>
+                    <p className="text-xs text-slate-500">DNI</p>
+                    <p className="font-semibold">{patient?.dni}</p>
+                </div>
+                </div>
 
-                <button className="mt-8 w-full bg-blue-600 hover:bg-blue-700 text-white rounded-2xl py-4 font-semibold flex justify-center items-center gap-3 transition">
+                <div className="flex items-center gap-4 bg-slate-50 rounded-2xl p-4">
+                    <div>
+                        <p className="text-xs text-slate-500">Peso</p>
+                        <p className="font-semibold">{patient?.peso} kg</p>
+                    </div>
+                </div>
+
+                <div className="flex items-center gap-4 bg-slate-50 rounded-2xl p-4">
+                    <div>
+                        <p className="text-xs text-slate-500">Altura</p>
+                        <p className="font-semibold">{patient?.altura} cm</p>
+                    </div>
+                </div>
+
+                <div className="flex items-center gap-4 bg-slate-50 rounded-2xl p-4">
+                    <div>
+                        <p className="text-xs text-slate-500">Sexo</p>
+                        <p className="font-semibold">{patient?.sexo}</p>
+                    </div>
+                </div>
+
+                <div className="flex items-center gap-4 bg-slate-50 rounded-2xl p-4">
+                    <div>
+                        <p className="text-xs text-slate-500">Dirección</p>
+                        <p className="font-semibold">{patient?.direccion}</p>
+                    </div>
+                </div>
+                <button  onClick={() => navigate("/editar-perfil")} className="mt-8 w-full bg-blue-600 hover:bg-blue-700 text-white rounded-2xl py-4 font-semibold flex justify-center items-center gap-3 transition">
                     <FaUserEdit/>
                     Editar perfil
                 </button>

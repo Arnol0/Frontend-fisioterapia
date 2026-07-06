@@ -6,7 +6,7 @@ import {
 
 import { useAuth } from "../../context/AuthContext";
 
-export default function HeroDashboard() {
+export default function HeroDashboard({ patient }) {
 
     const { usuario } = useAuth();
     

@@ -49,9 +49,13 @@ export default function Login() {
 
                 navigate("/administrador");
 
-            } else {
+            } else if (usuario.rol === "paciente") {
 
                 navigate("/dashboard");
+
+            } else {
+
+                toast.error("Rol no válido");
 
             }
 

@@ -16,7 +16,7 @@ import DashboardPaciente from "../pages/DashboardPaciente";
 import CalendarioPaciente from "../pages/CalendarioPaciente";
 import Rutina from "../pages/Rutina";
 import Historial from "../pages/Historial"
-
+import Edit from "../pages/Edit";
 
 
 export default function AppRoutes() {
@@ -42,7 +42,7 @@ export default function AppRoutes() {
                 <Route path="/rutina" element={<Rutina />} />
                 <Route path="/historial" element={<Historial />} />
                 <Route path="/administrador" element={<DashboardAdministrador />}/>
-
+                <Route path="/editar-perfil" element={<Edit />} />
 
             </Routes>
 

@@ -1,31 +1,25 @@
-import axios from "axios";
-
-const API = axios.create({
-    baseURL: "http://localhost:5000/api/auth",
-    headers: {
-        "Content-Type": "application/json",
-    },
-});
+import * as authApi from "../api/authApi";
 
 export const registerUser = async (data) => {
-    const response = await API.post("/register", data);
+
+    const response = await authApi.register(data);
+
     return response.data;
+
 };
 
 export const loginUser = async (data) => {
-    const response = await API.post("/login", data);
+
+    const response = await authApi.login(data);
+
     return response.data;
+
 };
 
 export const getPerfil = async () => {
 
-    const token = localStorage.getItem("token");
-
-    const response = await API.get("/perfil", {
-        headers: {
-            Authorization: `Bearer ${token}`,
-        },
-    });
+    const response = await authApi.perfil();
 
     return response.data;
+
 };
